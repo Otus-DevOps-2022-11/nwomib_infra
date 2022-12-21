@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash +e
 sudo apt update
 sudo apt-get install apt-transport-https ca-certificates
 wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
