@@ -1,6 +1,5 @@
+HW-03
 # nwomib_infra
 nwomib Infra repository
-HW-04
-testapp_IP = 62.84.114.150
-testapp_port = 9292
-
+bastion_IP = 51.250.13.255
+someinternalhost_IP = 10.128.0.3
