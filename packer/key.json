@@ -3,6 +3,6 @@
    "service_account_id": "aje60----------bs9",
    "created_at": "2022-12-23T06:24:02.425129757Z",
    "key_algorithm": "RSA_2048",
-   "public_key": "-----BEGIN PUBLIC KEY-----\!!!\n-----END PUBLIC KEY-----\n",
-   "private_key": "-----BEGIN PRIVATE KEY-----\!!!\n-----END PRIVATE KEY-----\n"
+   "public_key": "",
+   "private_key": ""
 }
