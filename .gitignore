@@ -6,3 +6,5 @@ packer/variables.json
 *.tfvars
 .terraform/
 terraform/appuser.pub
+terraform/priv
+*.info
