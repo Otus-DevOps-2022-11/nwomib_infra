@@ -1,12 +1,12 @@
 resource "yandex_compute_instance" "db" {
-  name = var.prod_app
+  name = "reddit-db"
   labels = {
     tags = "reddit-db"
   }
 
   resources {
-    cores  = var.cpu
-    memory = var.mem
+    cores  = 2
+    memory = 4
   }
 
   boot_disk {
@@ -16,7 +16,7 @@ resource "yandex_compute_instance" "db" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.app-subnet.id
+    subnet_id = var.subnet_id
     nat = true
   }
 
