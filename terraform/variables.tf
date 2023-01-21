@@ -20,8 +20,8 @@ variable subnet_id {
   description = "Subnet"
 }
 variable service_account_key_file {
-  description = "key .json"
+  description = "key.json"
 }
 variable private_key {
-  description = "file"
+  description = "priv"
 }

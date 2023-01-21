@@ -10,7 +10,7 @@ resource "yandex_compute_instance" "app" {
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
-
+  
   resources {
     cores  = 2
     memory = 2
@@ -25,7 +25,7 @@ resource "yandex_compute_instance" "app" {
 
   network_interface {
     # Указан id подсети default-ru-central1-a
-    subnet_id = var.subnet_id
+    subnet_id = yandex_vpc_subnet.app-subnet.id
     nat       = true
   }
 
@@ -47,3 +47,13 @@ resource "yandex_compute_instance" "app" {
     script = "files/deploy.sh"
   }
 }
+	resource "yandex_vpc_network" "app-network" {
+	  name = "reddit-app-network"
+	}
+
+	resource "yandex_vpc_subnet" "app-subnet" {
+	  name           = "reddit-app-subnet"
+	  zone           = "ru-central1-a"
+	  network_id     = "${yandex_vpc_network.app-network.id}"
+	  v4_cidr_blocks = ["192.168.10.0/24"]
+	}
