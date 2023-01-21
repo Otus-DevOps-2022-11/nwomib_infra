@@ -5,8 +5,8 @@ resource "yandex_compute_instance" "db" {
   }
 
   resources {
-    cores  = var.cpu
-    memory = var.mem
+    cores  = 2
+    memory = 4
   }
 
   boot_disk {
