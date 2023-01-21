@@ -8,3 +8,4 @@ packer/variables.json
 terraform/appuser.pub
 terraform/priv
 *.info
+packer/key.json
