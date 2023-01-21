@@ -9,3 +9,4 @@ terraform/appuser.pub
 terraform/priv
 *.info
 packer/key.json
+packer/key.json
