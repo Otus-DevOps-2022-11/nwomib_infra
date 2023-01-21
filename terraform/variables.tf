@@ -44,3 +44,4 @@ variable "secret_key" {
 variable "bucket_name" {
   description = "bucket_name"
   default     = "bucket_name"
+}  
