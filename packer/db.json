@@ -5,7 +5,7 @@
 			"service_account_key_file": "{{user `key_file`}}",
             "folder_id": "{{user `id_fol`}}",
             "source_image_family": "ubuntu-1604-lts",
-            "image_name": "reddit-base-{{timestamp}}",
+            "image_name": "reddit-db-{{timestamp}}",
             "image_family": "{{user `img_fam`}}",
             "ssh_username": "ubuntu",
             "platform_id": "standard-v1",
@@ -15,11 +15,6 @@
         }
     ],
     "provisioners": [
-        {
-            "type": "shell",
-            "script": "scripts/install_ruby.sh",
-            "execute_command": "sudo {{.Path}}"
-        },
         {
             "type": "shell",
             "script": "scripts/install_mongodb.sh",

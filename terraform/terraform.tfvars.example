@@ -6,3 +6,4 @@ public_key_path          = "appuser.pub"
 subnet_id                = "e9b9hmASZZt01le47daoe3"
 service_account_key_file = "key.json"
 private_key              = "priv"
+
