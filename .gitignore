@@ -5,3 +5,12 @@ packer/variables.json
 *.tfstate.backup
 *.tfvars
 .terraform/
+terraform/appuser.pub
+terraform/priv
+*.info
+packer/key.json
+packer/key.json
+terraform/stage/key.json
+terraform/stage/appuser.pub
+terraform/prod/key.json
+terraform/prod/appuser.pub

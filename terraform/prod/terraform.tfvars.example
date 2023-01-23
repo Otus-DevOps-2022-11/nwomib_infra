@@ -1,0 +1,11 @@
+cloud_id                 = "b1g5togtnendvqppvoie"
+folder_id                = "b1gv355u3l2dspkgvov0"
+zone                     = "ru-central1-a"
+image_id                 = "fd84gcfsk0v9p1ac4oh8"
+public_key_path          = "appuser.pub"
+subnet_id                = "e9b9hmsht01le47daoe3"
+service_account_key_file = "key.json"
+private_key              = "priv"
+app_disk_image           = "fd8t6auuun3adpv2u5sm"
+db_disk_image            = "fd8l612h33j4f8n79qu2"
+
