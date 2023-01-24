@@ -19,3 +19,4 @@ terraform/stage/appuser.pub
 terraform/prod/key.json
 terraform/prod/appuser.pub
 *.retry
+ansible/priv
