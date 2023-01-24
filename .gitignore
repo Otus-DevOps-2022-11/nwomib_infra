@@ -12,8 +12,6 @@ terraform/prod/key.json
 terraform/stage/appuser.pub
 terraform/stage/key.json
 *.info
-packer/key.json
-packer/key.json
 terraform/stage/key.json
 terraform/stage/appuser.pub
 terraform/prod/key.json
