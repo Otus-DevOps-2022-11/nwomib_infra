@@ -7,6 +7,10 @@ packer/variables.json
 .terraform/
 terraform/appuser.pub
 terraform/priv
+terraform/prod/appuser.pub
+terraform/prod/key.json
+terraform/stage/appuser.pub
+terraform/stage/key.json
 *.info
 packer/key.json
 packer/key.json
