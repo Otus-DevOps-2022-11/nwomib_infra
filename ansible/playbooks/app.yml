@@ -24,4 +24,4 @@
 
   handlers:
   - name: reload puma
-    systemd: name=puma state=reloaded     
+    systemd: name=puma state=reloaded 
