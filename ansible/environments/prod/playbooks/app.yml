@@ -1,9 +1,10 @@
 ---
-- name: Configure hosts & deploy application
+- name: Configure App
   hosts: app
   become: true
-  vars:
-    db_host: 10.128.0.8
+  roles:
+    - app
+    - jdauphant.nginx
   tasks:
     - name: Add unit file for Puma
       copy:
