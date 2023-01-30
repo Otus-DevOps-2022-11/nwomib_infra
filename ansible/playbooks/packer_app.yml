@@ -3,11 +3,9 @@
   hosts: all
   become: yes
   tasks:
-  - name: Run the equivalent of "apt-get update" as a separate step
-    ansible.builtin.apt:
-      update_cache: yes
   - name: Install ruby and rubygems and required packages
     apt: "name={{ item }} state=present"
+      update_cache: yes
     with_items:
       - ruby-full
       - ruby-bundler
