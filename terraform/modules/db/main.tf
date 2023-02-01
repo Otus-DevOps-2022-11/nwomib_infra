@@ -1,9 +1,9 @@
 resource "yandex_compute_instance" "db" {
-  name = "reddit-db"
+  name = "reddit-db-${var.prof}"
+  
   labels = {
     tags = "reddit-db"
   }
-
   resources {
     cores  = 2
     memory = 4

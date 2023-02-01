@@ -8,3 +8,6 @@ default = "reddit-app-base"
 variable subnet_id {
 description = "Subnets for modules"
 }
+variable prof {
+description = "Prod/Stage"
+}

@@ -8,4 +8,3 @@ service_account_key_file = "key.json"
 private_key              = "priv"
 app_disk_image           = "fd8t6auuun3adpv2u5sm"
 db_disk_image            = "fd8l612h33j4f8n79qu2"
-
