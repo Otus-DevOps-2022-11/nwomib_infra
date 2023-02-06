@@ -3,9 +3,10 @@
   hosts: app
   tasks:
     - name: Install Git
-      ansible.builtin.apt:
+      apt:
         name: git
         state: present
+        update_cache: yes
       become: true
     - name: Fetch the latest version of application code
       ansible.builtin.git:
