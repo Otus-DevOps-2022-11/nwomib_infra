@@ -19,7 +19,6 @@ Vagrant.configure("2") do |config|
     end
   end
 
-
   config.vm.define "appserver" do |app|
     app.vm.box = "ubuntu/xenial64"
     app.vm.hostname = "appserver"
