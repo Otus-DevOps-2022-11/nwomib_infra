@@ -1,21 +1,27 @@
 ---
 - name: Deploy App
   hosts: app
-  become: true
   tasks:
+    - name: Install Git
+      ansible.builtin.apt:
+        name: git
+        state: present
+      become: true
     - name: Fetch the latest version of application code
-      git:
+      ansible.builtin.git:
         repo: 'https://github.com/express42/reddit.git'
         dest: /home/ubuntu/reddit
         version: monolith
-      notify: restart puma
-
-    - name: bundle install
-      bundler:
+      notify: Reload puma
+    - name: Bundle install
+      ansible.builtin.bundler:
         state: present
         chdir: /home/ubuntu/reddit
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: "For check use http://{{ ansible_host }}:9292/"
 
   handlers:
-  - name: restart puma
-    become: true
-    systemd: name=puma state=restarted
+    - name: Reload puma
+      become: true
+      ansible.builtin.systemd: name=puma state=restarted
