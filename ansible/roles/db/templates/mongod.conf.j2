@@ -1,8 +1,16 @@
+# mongod.conf
+
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
 # Where and how to store data.
 storage:
   dbPath: /var/lib/mongodb
   journal:
     enabled: true
+#  engine:
+#  mmapv1:
+#  wiredTiger:
 
 # where to write logging data.
 systemLog:
@@ -14,3 +22,21 @@ systemLog:
 net:
   port: {{ mongo_port | default('27017') }}
   bindIp: {{ mongo_bind_ip }}
+
+# how the process runs
+processManagement:
+  timeZoneInfo: /usr/share/zoneinfo
+
+#security:
+
+#operationProfiling:
+
+#replication:
+
+#sharding:
+
+## Enterprise-Only Options:
+
+#auditLog:
+
+#snmp:
