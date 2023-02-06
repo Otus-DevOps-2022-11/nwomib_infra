@@ -9,6 +9,7 @@
         update_cache: yes
       become: true
     - name: Fetch the latest version of application code
+
       ansible.builtin.git:
         repo: 'https://github.com/express42/reddit.git'
         dest: /home/ubuntu/reddit
