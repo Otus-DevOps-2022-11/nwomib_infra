@@ -1,11 +1,10 @@
 ---
-# tasks file for roles/db
+# tasks file for db
 - name: Show info about the env this host belongs to
-  ansible.builtin.debug:
+  debug:
     msg: "This host is in {{ env }} environment!!!"
 
-- name: Include install_mongo.yml
-  include_tasks: install_mongo.yml
-
-- name: Include config_mongo.yml
-  include_tasks: config_mongo.yml
+- name: Install MongoDB
+  import_tasks: install_mongo.yml
+- name: Configure MongoDB
+  import_tasks: config_mongo.yml

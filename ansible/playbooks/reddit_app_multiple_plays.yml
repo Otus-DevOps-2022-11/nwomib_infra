@@ -1,73 +1,68 @@
 ---
-- name: Configure MongoDB
+- name: Configure hosts & deploy application
   hosts: db
-  tags: db-tag
+  tags: db-tag 
   become: true
   vars:
     mongo_bind_ip: 0.0.0.0
   tasks:
     - name: Change mongo config file
-      ansible.builtin.template:
+      template:
         src: templates/mongod.conf.j2
         dest: /etc/mongod.conf
         mode: 0644
-      notify: Restart mongod
-
+      notify: restart mongod
   handlers:
-  - name: Restart mongod
-    ansible.builtin.service: name=mongod state=restarted
+  - name: restart mongod
+    become: true
+    service: name=mongod state=restarted
 
-- name: Configure App
+
+- name: Configure hosts & deploy application
   hosts: app
-  tags: app-tag
+  tags: app-tag 
   become: true
   vars:
-   db_host: 192.168.10.4
+    db_host: 10.128.0.8
   tasks:
     - name: Add unit file for Puma
-      ansible.builtin.copy:
+      copy:
         src: files/puma.service
         dest: /etc/systemd/system/puma.service
-      notify: Reload puma
+      notify: reload puma
 
     - name: Add config for DB connection
-      ansible.builtin.template:
+      template:
         src: templates/db_config.j2
-        dest: /home/ubuntu/db_config
-        owner: ubuntu
-        group: ubuntu
+        dest: /home/appuser/db_config
+        owner: appuser
+        group: appuser
 
-    - name: Enable puma
-      ansible.builtin.systemd: name=puma enabled=yes
+    - name: enable puma
+      systemd: name=puma enabled=yes
 
   handlers:
-  - name: Reload puma
-    ansible.builtin.systemd: name=puma state=restarted
+  - name: reload puma
+    systemd: name=puma state=reloaded     
 
 - name: Deploy App
   hosts: app
   tags: deploy-tag
+  become: true
   tasks:
-    - name: Install Git
-      ansible.builtin.apt:
-        name: git
-        state: present
-      become: true
     - name: Fetch the latest version of application code
-      ansible.builtin.git:
+      git:
         repo: 'https://github.com/express42/reddit.git'
-        dest: /home/ubuntu/reddit
+        dest: /home/appuser/reddit
         version: monolith
-      notify: Reload puma
-    - name: Bundle install
-      ansible.builtin.bundler:
+      notify: restart puma
+
+    - name: bundle install
+      bundler:
         state: present
-        chdir: /home/ubuntu/reddit
-    - name: Print URL
-      ansible.builtin.debug:
-        msg: "For check use http://{{ ansible_host }}:9292/"
+        chdir: /home/appuser/reddit
 
   handlers:
-    - name: Reload puma
-      become: true
-      ansible.builtin.systemd: name=puma state=restarted
+  - name: restart puma
+    become: true
+    systemd: name=puma state=restarted

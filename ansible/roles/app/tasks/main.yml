@@ -1,10 +1,10 @@
 ---
-# tasks file for roles/app
+# tasks file for app
 - name: Show info about the env this host belongs to
-  ansible.builtin.debug:
+  debug:
     msg: "This host is in {{ env }} environment!!!"
 
-- name: Include ruby.yml
-  include_tasks: ruby.yml
-- name: Include puma.yml
-  include_tasks: puma.yml
+- name: Install Ruby
+  import_tasks: ruby.yml
+- name: Create puma service
+  import_tasks: puma.yml

@@ -1,28 +1,30 @@
 ---
-- name: Install MongoDB 4.2
+- name: Configure MongoDB
   hosts: all
   become: true
-  tasks:
-  # Добавим ключ репозитория для последующей работы с ним
-  - name: Add APT key
-    ansible.builtin.apt_key:
-      url: https://www.mongodb.org/static/pgp/server-4.2.asc
-      state: present
+  roles:
+    - db
 
-  # Подключаем репозиторий с пакетами mongodb
-  - name: Add APT repository
-    ansible.builtin.apt_repository:
-      repo: deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse
-      state: present
+# - name: install db
+#   hosts: all
+#   become: true
+#   tasks:
+#   - name: Add APT key
+#     apt_key:
+#       keyserver: keyserver.ubuntu.com
+#       id: EA312927
 
-  # Выполним установку пакета
-  - name: Install mongodb package
-    ansible.builtin.apt:
-      name: mongodb-org
-      state: present
+#   - name: repo
+#     apt_repository:
+#       repo: deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
+#       state: present
 
-  # Включаем сервис
-  - name: Configure service supervisor
-    ansible.builtin.systemd:
-      name: mongod
-      enabled: yes
+#   - name: install db
+#     apt:
+#       name: mongodb-org
+#       state: present
+
+#   - name: Configure service supervisor
+#     systemd:
+#       name: mongod
+#       enabled: yes

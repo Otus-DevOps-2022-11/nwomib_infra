@@ -1,4 +1,3 @@
 ---
-# handlers file for roles/app
-- name: Reload puma
-  ansible.builtin.systemd: name=puma state=restarted
+- name: reload puma
+  systemd: name=puma state=restarted

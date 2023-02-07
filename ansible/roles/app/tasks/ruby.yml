@@ -1,11 +1,15 @@
 ---
-# Установим в цикле все зависимости
 - name: Install ruby and rubygems and required packages
-  ansible.builtin.apt: "name={{ item }} state=present"
+  apt: "name={{ item }} state=present update_cache=yes"
   with_items:
     - ruby-full
     - ruby-bundler
     - build-essential
-  retries: 3
-  delay: 3
+  tags: ruby
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+    update_cache: yes
   tags: ruby
