@@ -1,10 +1,8 @@
 - name: Create users
   hosts: all
   become: true
-  
   vars_files:
     - "{{ inventory_dir }}/credentials.yml"
-
   tasks:
     - name: create users
       user:

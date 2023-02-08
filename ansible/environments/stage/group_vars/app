@@ -1,9 +1,8 @@
-db_host: 10.128.0.15
-
+db_host: 158.160.60.175
 nginx_sites:
-default:
-- listen 80
-- server_name "reddit"
-- location / {
-proxy_pass http://127.0.0.1:порт_приложения;
-}
+  default:
+    - listen 80
+    - server_name "reddit"
+    - location / {
+        proxy_pass http://127.0.0.1:9292;
+      }

@@ -1,5 +1,0 @@
----
-- import_playbook: /home/appuser/ansible/roles/db.yml
-- import_playbook: /home/appuser/ansible/roles/app.yml
-- import_playbook: deploy.yml
-- import_playbook: users.yml

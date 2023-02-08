@@ -1,17 +1,23 @@
 ---
 - name: Install Ruby && Bundler
   hosts: all
-  become: yes
-  tasks:
-  - name: Install ruby and rubygems and required packages
-    apt: "name={{ item }} state=present"
-      update_cache: yes
-    with_items:
-      - ruby-full
-      - ruby-bundler
-      - build-essential
-  - name: Install git
-    apt:
-      name: git
-      state: present
-      update_cache: yes
+  become: true
+  roles:
+    - app
+
+# - name: Install Ruby && Bundler
+#   hosts: all
+#   become: yes
+#   tasks:
+#   - name: Install ruby and rubygems and required packages
+#     apt: "name={{ item }} state=present"
+#     update_cache: yes
+#     with_items:
+#       - ruby-full
+#       - ruby-bundler
+#       - build-essential
+#   - name: Install git
+#     apt:
+#       name: git
+#       state: present
+#     update_cache: yes
